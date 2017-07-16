@@ -54,6 +54,6 @@ class General {
     }
 
     public function redirect(string $destiny) {
-        header('location:'. '/Warsztaty_IV/src/index.php' . $destiny);
+        header('location:'. '/Warsztaty_4/src/index.php' . $destiny);
     }
 }
