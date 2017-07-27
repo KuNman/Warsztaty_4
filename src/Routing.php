@@ -1,16 +1,20 @@
 <?php
 
+class Routing {
 
-class Routing
-{
-
-    static public function start(){
+    static public function start() {
 
         $cuttedUri = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "index.php/") + 9);
-        
+
+        echo $cuttedUri . '<br>';
+
         $parsedRequest = explode('/', $cuttedUri);
-        
+
+        var_dump($parsedRequest);
+
         $className = ucfirst($parsedRequest['1']);
+
+        echo $className;
 
         self::loadClass($className);
         $object = self::createObject($className);
@@ -18,9 +22,7 @@ class Routing
         if (!empty($_GET)) {
 
             $function = substr(
-                $parsedRequest['2'],
-                0,
-                strrpos($parsedRequest['2'], '?')
+                    $parsedRequest['2'], 0, strrpos($parsedRequest['2'], '?')
             );
 
             $values = array_values($_GET);
@@ -31,14 +33,13 @@ class Routing
         }
     }
 
-    static private function loadClass(string $className){
-        
-        include $className .
-            DIRECTORY_SEPARATOR . $className . '.php';
+    static private function loadClass(string $className) {
 
+        include $className .
+                DIRECTORY_SEPARATOR . $className . '.php';
     }
 
-    static private function createObject(string $className){
+    static private function createObject(string $className) {
         return new $className;
     }
 
