@@ -6,15 +6,15 @@ class Routing {
 
         $cuttedUri = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "index.php/") + 9);
 
-        echo $cuttedUri . '<br>';
+//        echo $cuttedUri . '<br>';
 
         $parsedRequest = explode('/', $cuttedUri);
 
-        var_dump($parsedRequest);
+//        var_dump($parsedRequest);
 
         $className = ucfirst($parsedRequest['1']);
 
-        echo $className;
+//        echo $className;
 
         self::loadClass($className);
         $object = self::createObject($className);

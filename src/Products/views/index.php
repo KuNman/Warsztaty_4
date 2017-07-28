@@ -1,8 +1,7 @@
 <?php
-
 $data = General::getData();
 
-foreach($data['products'] as $product){
+foreach ($data['products'] as $product) {
 
     foreach ($product as $value) {
         echo $value . ' ';
@@ -10,3 +9,5 @@ foreach($data['products'] as $product){
 
     echo '<br/>';
 }
+
+echo 'xxxxxxx' . $_POST['name'] . 'xxxxxxx';

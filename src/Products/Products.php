@@ -1,27 +1,27 @@
 <?php
 
-class Products extends General
-{
+class Products extends General {
+
     const VIEW_PATH = 'Products/views/';
 
-    public function add(){
+    public function add() {
 
         if ($this->is_post()) {
 
-            if($this->addProductValidation()){
+            if ($this->addProductValidation()) {
 
                 $name = $this->post['name'];
                 $amount = $this->post['amount'];
                 $price = $this->post['price'];
+                $dsc = $this->post['dsc'];
 
-                $sqlStatement = "INSERT INTO products(name, amount, price) values ('$name', '$amount', '$price')";
+                $sqlStatement = "INSERT INTO products(name, amount, price, dsc) values ('$name', '$amount', '$price', '$dsc')";
 
                 $result = $this->getConnection()->query($sqlStatement);
 
                 if ($result) {
                     $this->redirect('/products/index');
                 }
-
             }
 
             return false;
@@ -38,7 +38,7 @@ class Products extends General
 
     }
 
-    public function index(){
+    public function index() {
 
         $result = $this->getConnection()->query('SELECT * FROM products');
 
@@ -46,15 +46,14 @@ class Products extends General
             $data['products'][] = $row;
         }
 
-        $this->render('Products/views/index.php',  $data);
+        $this->render('Products/views/index.php', $data);
     }
 
-    private function addProductValidation()
-    {
+    private function addProductValidation() {
         return true;
     }
 
-    public function view(string $id){
+    public function view(string $id) {
 
         //pobranie produktu o id = 1
 
