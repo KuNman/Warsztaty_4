@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.18, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
 --
 -- Host: localhost    Database: shop
 -- ------------------------------------------------------
--- Server version	5.7.18-0ubuntu0.16.04.1
+-- Server version	5.7.19-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,12 +29,13 @@ CREATE TABLE `orders` (
   `qty` int(11) NOT NULL,
   `total` decimal(9,2) NOT NULL,
   `status` enum('PENDING','PAID','SENT','') NOT NULL,
+  `token` char(32) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `product_id` (`product_id`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +44,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,2,1,5,15.00,'PAID'),(2,1,3,3,18.60,'SENT'),(3,3,1,8,24.00,'PENDING');
+INSERT INTO `orders` VALUES (193,1,1,1,3.00,'PAID','b9941e7b103e9e19713c725fd8471eb4'),(194,1,2,2,6.40,'PAID','b9941e7b103e9e19713c725fd8471eb4'),(195,1,3,1,4.00,'PAID','ff2d43ff6ef43f502dc4f2710c1cfa6e'),(196,1,1,1,3.00,'PAID','ff2d43ff6ef43f502dc4f2710c1cfa6e'),(197,1,3,1,4.00,'PAID','4941fc3c5039ebd40e5470d1e038657e'),(198,1,1,1,3.00,'PAID','4941fc3c5039ebd40e5470d1e038657e'),(199,1,1,1,3.00,'PAID','bc432b2d810f9cbbaaca81ab4219dee7'),(200,1,2,1,3.20,'PAID','bc432b2d810f9cbbaaca81ab4219dee7'),(201,1,3,2,8.00,'PAID','9bf733f1c2e3134390682244dbd66480'),(202,1,2,4,12.80,'PAID','9bf733f1c2e3134390682244dbd66480');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,7 +72,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,'Lech',100,3,'Piwo lech takie se'),(2,'Zywiec Saison',50,4,'Piwo zywiec trochę lepsze'),(3,'Grolsch',20,6,'Piwo najdrozsze');
+INSERT INTO `products` VALUES (1,'Lech',100,3,'Piwo lech takie se'),(2,'Tyskie',50,4,'Piwo tyskie troche lepsze'),(3,'Grolsch',20,6,'Piwo najdrozsze');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,4 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-22  2:08:55
+-- Dump completed on 2017-08-03 22:34:22
