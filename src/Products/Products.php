@@ -39,28 +39,148 @@ class Products extends General
     }
 
     public function index(){
-
-        $result = $this->getConnection()->query('SELECT * FROM products');
-
-        while ($row = mysqli_fetch_row($result)) {
-            $data['products'][] = $row;
-        }
-
-        $this->render('Products/views/index.php',  $data);
+      if (isset($_COOKIE['alert'])) {
+        if (isset($_COOKIE['user'])) {
+          if ($_COOKIE['theme'] == 'dark') {
+              require_once('../src/views/index_dark.php');
+          } else {
+              require_once('../src/views/index.php');
+          }
+        } elseif (!isset($_COOKIE['user'])) {
+           require_once('../src/views/index.html');
+          }
+      } elseif (!isset($_COOKIE['alert'])) {
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/Warsztaty_4/src/views/js/js.cookie.js"></script>
+        <script src="/Warsztaty_4/src/views/js/alert.js"></script>' .
+        '<div id="myModal" class="reveal-modal">
+              <h3>Strona tylko dla osób dorosłych</h3>
+        			<p>Zamykając powiadomienie potwierdzasz swoją pełnoletność</p>
+        			<a class="close-reveal-modal">&#215;</a>
+        		</div>';
+        require_once('../src/views/index.html');
+      }
+  }
+    public function beers(){
+      if (isset($_COOKIE['alert'])) {
+        if (isset($_COOKIE['user'])) {
+          if ($_COOKIE['theme'] == 'dark') {
+              require_once('../src/views/beers_logged_dark.php');
+          } else {
+              require_once('../src/views/beers_logged.php');
+          }
+        } elseif (!isset($_COOKIE['user'])) {
+           require_once('../src/views/beers.php');
+          }
+      } elseif (!isset($_COOKIE['alert'])) {
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/Warsztaty_4/src/views/js/js.cookie.js"></script>
+        <script src="/Warsztaty_4/src/views/js/alert.js"></script>' .
+        '<div id="myModal" class="reveal-modal">
+              <h3>Strona tylko dla osób dorosłych</h3>
+        			<p>Zamykając powiadomienie potwierdzasz swoją pełnoletność</p>
+        			<a class="close-reveal-modal">&#215;</a>
+        		</div>';
+        require_once('../src/views/index.html');
+      }
+  }
+    public function view(){
+      if (isset($_COOKIE['alert'])) {
+        if (isset($_COOKIE['user'])) {
+          if ($_COOKIE['theme'] == 'dark') {
+              require_once('../src/views/view_logged_dark.php');
+          } else {
+              require_once('../src/views/view_logged.php');
+          }
+        } elseif (!isset($_COOKIE['user'])) {
+           require_once('../src/views/view.php');
+          }
+      } elseif (!isset($_COOKIE['alert'])) {
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/Warsztaty_4/src/views/js/js.cookie.js"></script>
+        <script src="/Warsztaty_4/src/views/js/alert.js"></script>' .
+        '<div id="myModal" class="reveal-modal">
+              <h3>Strona tylko dla osób dorosłych</h3>
+        			<p>Zamykając powiadomienie potwierdzasz swoją pełnoletność</p>
+        			<a class="close-reveal-modal">&#215;</a>
+        		</div>';
+        require_once('../src/views/index.html');
+      }
+  }
+    public function about(){
+      if (isset($_COOKIE['alert'])) {
+        if (isset($_COOKIE['user'])) {
+          if ($_COOKIE['theme'] == 'dark') {
+              require_once('../src/views/about_logged_dark.php');
+          } else {
+              require_once('../src/views/about_logged.php');
+          }
+        } elseif (!isset($_COOKIE['user'])) {
+           require_once('../src/views/about.html');
+          }
+      } elseif (!isset($_COOKIE['alert'])) {
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/Warsztaty_4/src/views/js/js.cookie.js"></script>
+        <script src="/Warsztaty_4/src/views/js/alert.js"></script>' .
+        '<div id="myModal" class="reveal-modal">
+              <h3>Strona tylko dla osób dorosłych</h3>
+        			<p>Zamykając powiadomienie potwierdzasz swoją pełnoletność</p>
+        			<a class="close-reveal-modal">&#215;</a>
+        		</div>';
+        require_once('../src/views/index.html');
+      }
+  }
+    public function basket(){
+      if (isset($_COOKIE['alert'])) {
+        if (isset($_COOKIE['user'])) {
+          if ($_COOKIE['theme'] == 'dark') {
+              require_once('../src/views/basket_logged_dark.php');
+          } else {
+              require_once('../src/views/basket_logged.php');
+          }
+        } elseif (!isset($_COOKIE['user'])) {
+           require_once('../src/views/basket.html');
+          }
+      } elseif (!isset($_COOKIE['alert'])) {
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/Warsztaty_4/src/views/js/js.cookie.js"></script>
+        <script src="/Warsztaty_4/src/views/js/alert.js"></script>' .
+        '<div id="myModal" class="reveal-modal">
+              <h3>Strona tylko dla osób dorosłych</h3>
+        			<p>Zamykając powiadomienie potwierdzasz swoją pełnoletność</p>
+        			<a class="close-reveal-modal">&#215;</a>
+        		</div>';
+        require_once('../src/views/index.html');
+      }
     }
+
+    public function sum(){
+      if (isset($_COOKIE['alert'])) {
+        if (isset($_COOKIE['user'])) {
+          if ($_COOKIE['theme'] == 'dark') {
+              require_once('../src/views/sum_logged_dark.php');
+          } else {
+              require_once('../src/views/sum_logged.php');
+          }
+        } elseif (!isset($_COOKIE['user'])) {
+           require_once('../src/views/index.html');
+          }
+      } elseif (!isset($_COOKIE['alert'])) {
+        echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/Warsztaty_4/src/views/js/js.cookie.js"></script>
+        <script src="/Warsztaty_4/src/views/js/alert.js"></script>' .
+        '<div id="myModal" class="reveal-modal">
+              <h3>Strona tylko dla osób dorosłych</h3>
+              <p>Zamykając powiadomienie potwierdzasz swoją pełnoletność</p>
+              <a class="close-reveal-modal">&#215;</a>
+            </div>';
+        require_once('../src/views/index.html');
+      }
+  }
 
     private function addProductValidation()
     {
         return true;
-    }
-
-    public function view(string $id){
-
-        //pobranie produktu o id = 1
-
-        $data['products'] = ['name' => 'kosiarka', 'id' => $id];
-
-        $this->render('Products/views/view.php', $data);
     }
 
 }

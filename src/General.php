@@ -12,6 +12,22 @@ class General {
         $this->files = $_FILES;
     }
 
+    public function getCssNameFromDb() {
+      return $this->id = $_COOKIE['theme'] ;
+    }
+
+    public function getNameFromDb() {
+      $id = substr($_COOKIE['user'],2);
+      $result = $this->getConnection()->query("SELECT * FROM users WHERE id = '$id' ");
+      while ($row = mysqli_fetch_row($result)) {
+        $data[] = $row;
+        }
+      foreach ($data as $key => $value) {
+        $name = $value[1];
+      }
+      return $this->name = $name;
+    }
+
     public function getData(){
         return General::$data;
     }
@@ -22,7 +38,7 @@ class General {
             General::$data = $data;
         }
 
-        require ($pathToFile);
+        //require ($pathToFile);
     }
 
     public function getConnection()
@@ -56,4 +72,5 @@ class General {
     public function redirect(string $destiny) {
         header('location:'. '/Warsztaty_4/src/index.php' . $destiny);
     }
+
 }
