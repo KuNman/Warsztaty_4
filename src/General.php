@@ -12,7 +12,7 @@ class General {
         $this->files = $_FILES;
     }
 
-    public function getData(){
+    static function getData(){
         return General::$data;
     }
 
