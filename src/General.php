@@ -28,6 +28,41 @@ class General {
       return $this->name = $name;
     }
 
+    public function displayAlert() {
+      if ($this->checkAlertIsAccepted() == false) {
+       echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="/Warsztaty_4/src/views/js/js.cookie.js"></script>
+                <script src="/Warsztaty_4/src/views/js/alert.js"></script>' .
+                '<div id="myModal" class="reveal-modal">
+                      <h3>Strona tylko dla osób dorosłych</h3>
+                			<p>Zamykając powiadomienie potwierdzasz swoją pełnoletność</p>
+                			<a class="close-reveal-modal">&#215;</a>
+                		</div>';
+      }
+    }
+
+    public function checkAlertIsAccepted() {
+      if (isset($_COOKIE['alert'])) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    public function checkUserIsLogged() {
+      if (isset($_COOKIE['user'])) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    public function checkThemeIsDark() {
+      if (($_COOKIE['theme']) == 'dark') {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
     public function getData(){
         return General::$data;
     }
