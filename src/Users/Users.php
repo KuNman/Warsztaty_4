@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../DatabaseQueries.php';
+require_once '../../../DatabaseQueries.php';
 
 class Users extends DatabaseQueries
 {
@@ -20,10 +20,12 @@ class Users extends DatabaseQueries
         $this->hashedPassword = $hashedPassword;
     }
 
-    public static function getAllUsersObject()
+    public static function getAllUsersArray()
     {
         $sql = "SELECT * FROM users";
-        return DatabaseQueries::sqlQueryData($sql);
+        $result = DatabaseQueries::sqlQueryData($sql);
+        $allUsersArray = DatabaseQueries::getAllData($result);
+        return $allUsersArray;
     }
 
     public static function getUserById(int $id)

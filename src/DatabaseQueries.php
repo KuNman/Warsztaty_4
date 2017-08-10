@@ -10,7 +10,7 @@ class DatabaseQueries extends General
 
     public static function getAllData(mysqli_result $result) {
         $dataArray = [];
-        while ($row = $result->fetch_object()) {
+        while ($row = $result->fetch_assoc()) {
             $dataArray[] = $row;
         }
         if (count($dataArray) > 0) {

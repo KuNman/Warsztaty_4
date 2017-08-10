@@ -2,7 +2,7 @@
 require_once '../Users.php';
 
 $select = Users::getAllUsersObject();
-var_dump($select);
+//var_dump($select);
 $users = DatabaseQueries::getAllData($select);
 
 ?>
