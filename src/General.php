@@ -25,7 +25,7 @@ class General {
         require ($pathToFile);
     }
 
-    public function getConnection()
+    public static function getConnection()
     {
         $configDB = array(
             'servername' => "localhost",

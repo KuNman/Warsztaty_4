@@ -1,8 +1,9 @@
 <?php
 
-//require_once '../General.php';
+require_once '../../DatabaseQueries.php';
 
-class Users extends General {
+class Users extends DatabaseQueries
+{
 
     protected $id;
     protected $name;
@@ -10,7 +11,8 @@ class Users extends General {
     protected $email;
     protected $hashedPassword;
 
-    function __construct($id, $name, $surname, $email, $hashedPassword) {
+    function __construct($id, $name, $surname, $email, $hashedPassword)
+    {
         $this->id = -1;
         $this->name = $name;
         $this->surname = $surname;
@@ -18,39 +20,59 @@ class Users extends General {
         $this->hashedPassword = $hashedPassword;
     }
 
-    function getId() {
+    public static function getAllUsersObject()
+    {
+        $sql = "SELECT * FROM users";
+        return DatabaseQueries::sqlQueryData($sql);
+    }
+
+    public static function getUserById(int $id)
+    {
+
+    }
+
+    function getId()
+    {
         return $this->id;
     }
 
-    function getName() {
+    function getName()
+    {
         return $this->name;
     }
 
-    function getSurname() {
-        return $this->surname;
-    }
-
-    function getEmail() {
-        return $this->email;
-    }
-
-    function getHashedPassword() {
-        return $this->hashedPassword;
-    }
-
-    function setName($name) {
+    function setName($name)
+    {
         $this->name = $name;
     }
 
-    function setSurname($surname) {
+    function getSurname()
+    {
+        return $this->surname;
+    }
+
+    function setSurname($surname)
+    {
         $this->surname = $surname;
     }
 
-    function setEmail($email) {
+    function getEmail()
+    {
+        return $this->email;
+    }
+
+    function setEmail($email)
+    {
         $this->email = $email;
     }
 
-    public function setHashedPassword($pass) {
+    function getHashedPassword()
+    {
+        return $this->hashedPassword;
+    }
+
+    public function setHashedPassword($pass)
+    {
         $options = ['cost' => 11];
         $hashedPassword = password_hash($pass, PASSWORD_BCRYPT, $options);
         $this->hashedPassword = $hashedPassword;

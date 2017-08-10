@@ -1,11 +1,23 @@
 <?php
+require_once 'General.php';
 
 class DatabaseQueries extends General
 {
-    public function sqlSelectAll(string $table) {
-        $sql = "SELECT * FROM $table";
-        $result = $this->getConnection()->query($sql);
-        $row = $result->fetch_object();
-        echo $row->name;
+    public static function sqlQueryData(string $sql) {
+        $result = General::getConnection()->query($sql);
+        return $result;
     }
+
+    public static function getAllData(mysqli_result $result) {
+        $dataArray = [];
+        while ($row = $result->fetch_object()) {
+            $dataArray[] = $row;
+        }
+        if (count($dataArray) > 0) {
+            return $dataArray;
+        } else {
+            return 'Brak wyników';
+        }
+    }
+
 }

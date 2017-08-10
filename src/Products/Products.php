@@ -1,4 +1,5 @@
 <?php
+require_once '../../General.php';
 
 class Products extends General {
 
