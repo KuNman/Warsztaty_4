@@ -1,8 +1,12 @@
 <?php
 require_once '../../.././Users/Users.php';
 
-$users = Users::getAllUsersArray();
+//$users = Users::getAllUsersArray();
 //var_dump($users);
+//$userById = Users::getUserById(1);
+//var_dump($userById);
+$userByEmail = Users::getUserByEmail('adam@gmail.com');
+var_dump($userByEmail);
 
 ?>
 <!DOCTYPE html>
@@ -425,7 +429,7 @@ $users = Users::getAllUsersArray();
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
+            <li><a href="../tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
             <li class="active"><a href="data.php"><i class="fa fa-circle-o"></i> Data tables</a></li>
           </ul>
         </li>
@@ -549,21 +553,25 @@ $users = Users::getAllUsersArray();
                 </thead>
                 <tbody>
                 <?php
-                foreach ($users as $user) {
-                    echo '<tr>';
-                    echo '<td>' . $user['id'] . '</td>' .
-                        '<td>' . $user['name'] . '</td>' .
-                        '<td>' . $user['surname'] . '</td>' .
-                        '<td>' . $user['email'].'</td>';
-                    echo '<td>';
-                    if ($user['role'] === 'USER') {
-                        echo '<span class="label label-success">User</span>';
-                    } else  {
-                        echo '<span class="label label-danger">Admin</span>';
+                if ($userByEmail !== false) {
+                    foreach ($userByEmail as $user) {
+                        echo '<tr>';
+                        echo '<td>' . $user->id . '</td>' .
+                            '<td>' . $user->name . '</td>' .
+                            '<td>' . $user->surname . '</td>' .
+                            '<td>' . $user->email . '</td>';
+                        echo '<td>';
+                        if ($user->role === 'USER') {
+                            echo '<span class="label label-success">User</span>';
+                        } else {
+                            echo '<span class="label label-danger">Admin</span>';
+                        }
+                        echo '</td>' .
+                            '<td>' . $user->password . '</td>';
+                        echo '</tr>';
                     }
-                    echo '</td>' .
-                        '<td>' . $user['password'].'</td>';
-                    '</tr>';
+                } else {
+                    echo '<tr><td colspan="6">No records found!</td></tr>';
                 }
                 ?>
                 </tbody>
