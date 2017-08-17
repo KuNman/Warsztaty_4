@@ -1,7 +1,7 @@
 <?php
-require_once '../../DatabaseQueries.php';
+require_once '../../Users/Users.php';
 
-$select = new DatabaseQueries();
+$select = Users::getAllUsersArray();
 
 
 ?>
@@ -13,6 +13,11 @@ $select = new DatabaseQueries();
     <title>Imie</title>
 </head>
 <body>
-<?php $select->sqlSelectAll('users'); echo 'ok';?>
+    <?php
+    foreach ($select as $user) {
+        echo $user->name . '<br>';
+
+    }
+    ?>
 </body>
 </html>

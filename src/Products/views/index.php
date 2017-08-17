@@ -1,4 +1,6 @@
 <?php
+require_once '../Products.php';
+
 $data = General::getData();
 
 foreach ($data['products'] as $product) {

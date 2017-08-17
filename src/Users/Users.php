@@ -1,5 +1,4 @@
 <?php
-
 require_once '../../../DatabaseQueries.php';
 
 class Users extends DatabaseQueries
@@ -11,13 +10,13 @@ class Users extends DatabaseQueries
     protected $email;
     protected $hashedPassword;
 
-    function __construct($id, $name, $surname, $email, $hashedPassword)
+    function __construct()
     {
-        $this->id = $id;
-        $this->name = $name;
-        $this->surname = $surname;
-        $this->email = $email;
-        $this->hashedPassword = $hashedPassword;
+        $this->id = -1;
+        $this->name = '';
+        $this->surname = '';
+        $this->email = '';
+        $this->hashedPassword = '';
     }
 
     public static function getAllUsersArray()

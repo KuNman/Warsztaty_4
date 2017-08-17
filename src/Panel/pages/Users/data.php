@@ -1,13 +1,16 @@
 <?php
-require_once '../../.././Users/Users.php';
+require_once '../../../Users/Users.php';
 
 //$users = Users::getAllUsersArray();
 //var_dump($users);
 //$userById = Users::getUserById(1);
 //var_dump($userById);
 $userByEmail = Users::getUserByEmail('adam@gmail.com');
-var_dump($userByEmail);
+//var_dump($userByEmail);
 
+$userNew = new Users();
+$userNew->setName('Anitka');
+echo $userNew->getName();
 ?>
 <!DOCTYPE html>
 <html>

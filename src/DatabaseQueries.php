@@ -5,9 +5,7 @@ class DatabaseQueries extends General
 {
     public static function sqlQueryData(string $sql)
     {
-        $result = General::getConnection()->query($sql);
-
-        return $result;
+        return General::getConnection()->query($sql);
     }
 
     private static function confirmResult($result)

@@ -53,7 +53,14 @@ class General {
         return false;
     }
 
-    public function redirect(string $destiny) {
+    public function redirect(string $destiny)
+    {
         header('location:'. '/Warsztaty_4/src/index.php' . $destiny);
+    }
+
+    //Dodane na potrzeby Panelu
+    public function panelRedirect($location)
+    {
+        header("location: {$location}");    ;
     }
 }
