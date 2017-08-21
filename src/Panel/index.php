@@ -1,6 +1,5 @@
 <?php
 require_once '../Session.php';
-require_once '../General.php';
 
 $session = new Session();
 

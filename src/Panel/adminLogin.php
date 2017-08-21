@@ -1,3 +1,30 @@
+<?php
+require_once '../Session.php';
+require_once '../Users/Users.php';
+
+
+$session = new Session();
+
+if ($session->isLoggedIn()) {
+    header("Location: index.php");
+}
+
+if (isset($_POST['submit'])) {
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    $userFound = Users::verifyUser($email, $password);
+
+    if ($userFound) {
+        $session->login($userFound);
+
+        header("Location: index.php");
+    } else {
+        $failedLoginInfo = 'Your login or password are incorrect';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
