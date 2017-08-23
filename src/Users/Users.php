@@ -13,8 +13,6 @@ class Users extends DatabaseQueries
 
     function __construct()
     {
-        parent::__construct();
-        $this->dbObject = $this->getDbObjectInstantiation();
         $this->id = -1;
         $this->name = '';
         $this->surname = '';
@@ -58,10 +56,10 @@ class Users extends DatabaseQueries
 
     }
 
-    public static function verifyUser($email, $password)
+    public function verifyUser($email, $password)
     {
-        $email = $this->dbObject->getDbObjectInstantiation()->escapeString($email);
-        $hashedPassword = parent::escapeString($password);
+        $email = DatabaseQueries::escapeString($email);
+        $hashedPassword = $this->setHashedPassword(DatabaseQueries::escapeString($password));
 
 
 

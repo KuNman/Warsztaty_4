@@ -3,20 +3,6 @@ require_once 'General.php';
 
 class DatabaseQueries extends General
 {
-    public $database;
-    private $dbObject;
-
-
-    public function __construct()
-    {
-        $this->database = General::getConnection();
-    }
-
-    public function getDbObjectInstantiation()
-    {
-        $this->dbObject = new DatabaseQueries();
-    }
-
     public static function sqlQueryData(string $sql)
     {
         return General::getConnection()->query($sql);
@@ -51,7 +37,7 @@ class DatabaseQueries extends General
 
     }
 
-    public function escapeString($string)
+    protected function escapeString($string)
     {
         $escapedString = mysqli_real_escape_string(General::getConnection(), $string);
 
