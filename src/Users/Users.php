@@ -1,8 +1,8 @@
 <?php
-require_once '../../DatabaseQueries.php';
 
 class Users extends DatabaseQueries
 {
+    const VIEW_PATH = 'Users/views/';
 
     protected $id;
     protected $name;

@@ -1,5 +1,4 @@
 <?php
-require_once '../Products.php';
 
 $data = General::getData();
 

@@ -1,5 +1,4 @@
 <?php
-require_once '../Products.php';
 
 $data = General::getData();
 
@@ -12,4 +11,4 @@ foreach ($data['products'] as $product) {
     echo '<br/>';
 }
 
-echo 'xxxxxxx' . $_POST['name'] . 'xxxxxxx';
+//echo 'xxxxxxx' . $_POST['name'] . 'xxxxxxx';

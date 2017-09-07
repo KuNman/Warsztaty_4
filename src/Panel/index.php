@@ -1,5 +1,5 @@
 <?php
-require_once '../Session.php';
+require_once '../UserSession.php';
 
 $session = new Session();
 
