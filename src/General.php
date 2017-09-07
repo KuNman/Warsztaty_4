@@ -30,7 +30,7 @@ class General {
         $configDB = array(
             'servername' => "localhost",
             'username' => "root",
-            'password' => "coderslab",
+            'password' => "marecki@123",
             'baseName' => "shop"
         );
 

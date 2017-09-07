@@ -1,5 +1,5 @@
 <?php
-require_once '../../../DatabaseQueries.php';
+require_once '../../DatabaseQueries.php';
 
 class Users extends DatabaseQueries
 {

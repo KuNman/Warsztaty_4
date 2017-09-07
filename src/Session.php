@@ -25,7 +25,7 @@ class Session
         }
     }
 
-    public function login($user)
+    public function login(object $user)
     {
         if ($user) {
             $this->userId = $_SESSION['userId'] = $user->id;
