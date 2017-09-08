@@ -11,8 +11,9 @@ class Users extends DatabaseQueries
     protected $hashedPassword;
     protected $dbObject;
 
-    function __construct()
+    public function __construct()
     {
+        parent::__construct();
         $this->id = -1;
         $this->name = '';
         $this->surname = '';
@@ -22,13 +23,11 @@ class Users extends DatabaseQueries
 
     public static function getAllUsersArray()
     {
-        $sql = "SELECT * FROM users";
+        $sql = 'SELECT * FROM users';
 
         $result = DatabaseQueries::sqlQueryData($sql);
 
-        $allUsersArray = DatabaseQueries::getAllData($result);
-
-        return $allUsersArray;
+        return DatabaseQueries::getAllData($result);
     }
 
     public static function getUserById(int $id)
@@ -37,9 +36,7 @@ class Users extends DatabaseQueries
 
         $result = DatabaseQueries::sqlQueryData($sql);
 
-        $userById = DatabaseQueries::getAllData($result);
-
-        return $userById;
+        return DatabaseQueries::getAllData($result);
 
     }
 
@@ -50,9 +47,7 @@ class Users extends DatabaseQueries
 
         $result = DatabaseQueries::sqlQueryData($sql);
 
-        $userByEmail = DatabaseQueries::getAllData($result);
-
-        return $userByEmail;
+        return DatabaseQueries::getAllData($result);
 
     }
 
@@ -85,7 +80,7 @@ class Users extends DatabaseQueries
      * @param mixed $name
      * @return Users
      */
-    public function setName($name)
+    public function setName($name): \Users
     {
         $this->name = $name;
 
@@ -104,7 +99,7 @@ class Users extends DatabaseQueries
      * @param mixed $surname
      * @return Users
      */
-    public function setSurname($surname)
+    public function setSurname($surname): \Users
     {
         $this->surname = $surname;
 

@@ -2,7 +2,8 @@
 
 class Routing {
 
-    static public function start() {
+    public static function start(): void
+    {
 
         $cuttedUri = substr($_SERVER['REQUEST_URI'], strpos($_SERVER['REQUEST_URI'], "index.php/") + 9);
 
@@ -33,13 +34,14 @@ class Routing {
         }
     }
 
-    static private function loadClass(string $className) {
+    private static function loadClass(string $className): void
+    {
 
         include $className .
                 DIRECTORY_SEPARATOR . $className . '.php';
     }
 
-    static private function createObject(string $className) {
+    private static function createObject(string $className) {
         return new $className;
     }
 

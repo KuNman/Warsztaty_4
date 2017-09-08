@@ -12,20 +12,21 @@ class General {
         $this->files = $_FILES;
     }
 
-    static function getData(){
-        return General::$data;
+    public static function getData()
+    {
+        return self::$data;
     }
 
     public function render(string $pathToFile, $data = [])
     {
         if(!empty($data)){
-            General::$data = $data;
+            self::$data = $data;
         }
 
         require ($pathToFile);
     }
 
-    public static function getConnection()
+    public static function getConnection(): \mysqli
     {
         $configDB = array(
             'servername' => "localhost",
@@ -37,14 +38,14 @@ class General {
         $conn = new mysqli($configDB['servername'], $configDB['username'], $configDB['password'], $configDB['baseName']);
 
         if ($conn->connect_error) {
-            die("Polaczenie nieudane. Blad: " . $conn->connect_error."<br>");
+            die('Polaczenie nieudane. Blad: ' . $conn->connect_error. '<br>');
         }
 
         return $conn;
     }
 
 
-    public function is_post()
+    public function is_post(): bool
     {
         if(!empty($this->post)){
             return true;
@@ -53,13 +54,13 @@ class General {
         return false;
     }
 
-    public function redirect(string $destiny)
+    public function redirect(string $destiny): void
     {
         header('location:'. '/Warsztaty_4/src/index.php' . $destiny);
     }
 
     //Dodane na potrzeby Panelu
-    public function panelRedirect($location)
+    public function panelRedirect($location): void
     {
         header("location: {$location}");    ;
     }

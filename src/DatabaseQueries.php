@@ -1,5 +1,4 @@
 <?php
-require_once 'General.php';
 
 class DatabaseQueries extends General
 {
@@ -31,17 +30,15 @@ class DatabaseQueries extends General
 
         if (count($dataArray) > 0) {
             return $dataArray;
-        } else {
-            return false;
         }
+
+        return false;
 
     }
 
     protected function escapeString($string)
     {
-        $escapedString = mysqli_real_escape_string(General::getConnection(), $string);
-
-        return $escapedString;
+        return mysqli_real_escape_string(General::getConnection(), $string);
     }
 
 }
